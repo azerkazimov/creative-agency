@@ -1,0 +1,28 @@
+.register-form {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error{
+    color: #e20303;
+    font-size: 12px;
+}
+
+.form-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-success-message{
+    color: #2ecc40;
+    font-size: 14px;
+    background-color: #e6ffed;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #b7eb8f;
+    margin-top: 10px;
+}

@@ -1,0 +1,27 @@
+.login-form{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-error-message{
+    color: #ff4d4f;
+    background-color: #fff1f0;
+    border: 1px solid #ffa39e;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.form-success-message{
+    color: #2ecc40;
+    font-size: 14px;
+    background-color: #e6ffed;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #b7eb8f;
+    margin-top: 10px;
+}
