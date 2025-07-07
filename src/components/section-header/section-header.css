@@ -1,0 +1,28 @@
+.section-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-header-highlight {
+    font-family: "Quicksand", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.section-header-content {
+    font-size: 55px;
+    font-weight: 700;
+}
+
+@media (max-width: 962px) {
+    .section-header-highlight {
+        font-size: 18px;
+    }
+
+    .section-header-content {
+        font-size: 26px;
+    }
+}

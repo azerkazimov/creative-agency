@@ -1,0 +1,12 @@
+.btn-collection {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+@media screen and (max-width: 962px) {
+  .btn-collection {
+    justify-content: center !important;
+  }
+}

@@ -1,11 +1,12 @@
-import Hero from "./components/hero";
-import "./main.css"
+import AboutSection from "./components/about/about";
+import Hero from "./components/hero/hero";
+import "./main.css";
 
 export default function Main() {
-    return (
-        <div className="container">
-            <Hero/>
-        </div>
-    );
+  return (
+    <>
+      <Hero />
+      <AboutSection />
+    </>
+  );
 }
-

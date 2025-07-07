@@ -1,3 +1,4 @@
+import ButtonCollection from "../../components/button-collection/button-collection";
 import "./header.css";
 
 export default function Header() {
@@ -25,7 +26,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className="btn-collection">
+        <ButtonCollection>
           <div className="auth-btn">
             <a href="/auth/login">Login</a>
           </div>
@@ -35,7 +36,7 @@ export default function Header() {
           <div className="nav-btn">
             <button className="btn btn-transparent">Contact</button>
           </div>
-        </div>
+        </ButtonCollection>
       </header>
     </div>
   );
