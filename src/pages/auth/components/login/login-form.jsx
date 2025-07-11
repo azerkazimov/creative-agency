@@ -41,7 +41,7 @@ export default function LoginForm() {
       setPassword("");
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/dashboard");
       }, 2000);
     }
   };

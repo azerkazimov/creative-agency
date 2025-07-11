@@ -10,6 +10,10 @@ import Login from "./pages/auth/login/login";
 import Register from "./pages/auth/register/register";
 import MainLayout from "./layout/main-layout";
 import AuthLayout from "./layout/auth-layout";
+import Dashboard from "./pages/dashboard/dashboard";
+import ProtechtedLayout from "./layout/protechted-layout";
+import ProtechtedRoute from "./utils/protechted-route/protechted-route";
+import PublicRoute from "./utils/public-route/public-route";
 
 export default function App() {
   return (
@@ -23,11 +27,35 @@ export default function App() {
             <Route path="/project" element={<Project />} />
           </Route>
 
-          <Route element={<AuthLayout />}>
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/register" element={<Register />} />
+          <Route element={<ProtechtedLayout />}>
+            <Route
+              path="/dashboard"
+              element={
+                <ProtechtedRoute>
+                  <Dashboard />
+                </ProtechtedRoute>
+              }
+            />
           </Route>
-          
+
+          <Route element={<AuthLayout />}>
+            <Route
+              path="/auth/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/auth/register"
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
+            />
+          </Route>
         </Routes>
       </Router>
     </HelmetProvider>

@@ -119,3 +119,24 @@ code {
 .check-control input:checked {
   accent-color: #415882;
 }
+
+.access {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.access h2 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.access span a {
+  color: #377dff;
+  font-size: 24px;
+  font-weight: 700;
+}

@@ -2,24 +2,23 @@ import { useEffect, useState } from "react";
 import ButtonCollection from "../../components/button-collection/button-collection";
 import "./navbar.css";
 
-export default function Navbar() {
+export default function Navbar({ isAutentificated, user, onLogout }) {
   const [scrolled, setScrolled] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(null)
 
-  useEffect(()=>{
-    const storredData = localStorage.getItem("currentUser");
+  // const [loggedIn, setLoggedIn] = useState(null)
 
-    const isAutentificated = JSON.parse(storredData);
-    setLoggedIn(isAutentificated)
-  }, [])
+  // useEffect(()=>{
+  //   const storredData = localStorage.getItem("currentUser");
 
+  //   const isAutentificated = JSON.parse(storredData);
+  //   setLoggedIn(isAutentificated)
+  // }, [])
 
-
-  const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    setLoggedIn(false)
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("currentUser");
+  //   setLoggedIn(false)
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,12 +29,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   const toggleDropdown = () => {
     setDropdown(!dropdown);
-
   };
-
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
@@ -63,12 +59,17 @@ export default function Navbar() {
             </ul>
           </nav>
           <ButtonCollection>
-            {loggedIn?.isLoggedIn ? (
+            {isAutentificated ? (
               <div className="avatar-container">
                 <div className="avatar" onClick={toggleDropdown}></div>
+                <span className="avatar-user-name">
+                  {user?.name ? user.name.charAt(0).toUpperCase() : ""}
+                </span>
                 {dropdown && (
                   <div className="dropdown-menu">
-                    <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                    <button className="dropdown-item" onClick={onLogout}>
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
