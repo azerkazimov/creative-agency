@@ -43,6 +43,9 @@ export default function LoginForm() {
       setTimeout(() => {
         navigate("/dashboard");
       }, 2000);
+    } else {
+      setError("Email ve ya parol sehvdir!");
+      setSuccessMessage("");
     }
   };
 
@@ -56,14 +59,18 @@ export default function LoginForm() {
         <input
           type="email"
           className="form-control"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Emailinizi daxil edin"
+          required
         />
         <input
           type="password"
           className="form-control"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="********"
+          required
         />
         <button type="submit" className="btn btn-white">
           Submit

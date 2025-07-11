@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export function useAuthMiddleware() {
-  const [isAutentificated, setIsAutentificated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    chechAuthStatus();
+    checkAuthStatus();
   }, [location.pathname]);
 
-  const chechAuthStatus = () => {
+  const checkAuthStatus = () => {
     try {
       const loginData = localStorage.getItem("currentUser");
       const userData = localStorage.getItem("userData");
@@ -22,7 +22,7 @@ export function useAuthMiddleware() {
         console.log(parseLoginData);
 
         if (parseLoginData.isLoggedIn) {
-          setIsAutentificated(true);
+          setIsAuthenticated(true);
           setUser({
             name: parseLoginData.name,
             email: parseLoginData.email,
@@ -43,9 +43,10 @@ export function useAuthMiddleware() {
   };
 
   const clearAuthData = () => {
-    setIsAutentificated(false);
+    setIsAuthenticated(false);
     setUser(null);
-    localStorage.removeItem("logindata");
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("userData");
   };
 
   const logout = () => {
@@ -54,11 +55,11 @@ export function useAuthMiddleware() {
   };
 
   return {
-    isAutentificated,
+    isAuthenticated,
     user,
     loading,
     logout,
-    chechAuthStatus,
+    checkAuthStatus,
   };
 }
 
@@ -66,20 +67,20 @@ export function useRouterProtection(
   requireAuth = false,
   redirectTo = "/auth/login"
 ) {
-  const { isAutentificated, loading } = useAuthMiddleware();
+  const { isAuthenticated, loading } = useAuthMiddleware();
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     if (!loading) {
-      if (requireAuth && !isAutentificated) {
+      if (requireAuth && !isAuthenticated) {
         navigate(redirectTo, {
           state: { from: location },
           replace: true,
         });
       }
     }
-  }, [isAutentificated, requireAuth, loading, redirectTo, navigate, location]);
+  }, [isAuthenticated, requireAuth, loading, redirectTo, navigate, location]);
 
-  return { isAutentificated, loading };
+  return { isAuthenticated, loading };
 }

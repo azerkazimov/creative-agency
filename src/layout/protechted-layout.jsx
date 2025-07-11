@@ -4,7 +4,7 @@ import Navbar from "./navbar/navbar";
 import Loading from "../components/loading/loading";
 import { useAuthMiddleware } from "../middleware/use-auth-middleware";
 
-export default function ProtechtedLayout({
+export default function ProtectedLayout({
   requireAuth = true,
   fallBackComponent = null,
 }) {

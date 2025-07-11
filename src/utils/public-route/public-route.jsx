@@ -3,14 +3,14 @@ import { useAuthMiddleware } from "../../middleware/use-auth-middleware";
 import Loading from "../../components/loading/loading";
 
 export default function PublicRoute({ children, redirectTo = "/" }) {
-  const { isAutentificated, loading } = useAuthMiddleware();
+  const { isAuthenticated, loading } = useAuthMiddleware();
   const location = useLocation();
 
   if (loading) {
-    <Loading />;
+    return <Loading />;
   }
 
-  if (isAutentificated) {
+  if (isAuthenticated) {
     const from = location.state?.from?.pathname || redirectTo;
     return <Navigate to={from} replace />;
   }

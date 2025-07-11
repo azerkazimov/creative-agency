@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuthMiddleware from "./use-auth-middleware";
+import { useAuthMiddleware } from "./use-auth-middleware";
 import { useEffect } from "react";
 
 export default function useRouteProtection(
@@ -22,5 +22,5 @@ export default function useRouteProtection(
     }
   }, [isAuthenticated, loading, redirectTo, requiredAuth, navigate, location]);
 
-  return {isAuthenticated, loading};
+  return { isAuthenticated, loading };
 }

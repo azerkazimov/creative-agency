@@ -6,16 +6,16 @@ export default function ProtectedRoute({
   children,
   redirectTo = "/auth/login",
 }) {
-  const { isAutentificated, loading } = useAuthMiddleware();
+  const { isAuthenticated, loading } = useAuthMiddleware();
   const location = useLocation();
 
   if (loading) {
    return <Loading />;
   }
 
-  if (!isAutentificated) {
+  if (!isAuthenticated) {
     return <Navigate to={redirectTo} state={{ from: location }} replace />;
   }
 
-  return children
+  return children;
 }

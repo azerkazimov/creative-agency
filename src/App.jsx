@@ -11,8 +11,7 @@ import Register from "./pages/auth/register/register";
 import MainLayout from "./layout/main-layout";
 import AuthLayout from "./layout/auth-layout";
 import Dashboard from "./pages/dashboard/dashboard";
-import ProtechtedLayout from "./layout/protechted-layout";
-import ProtechtedRoute from "./utils/protechted-route/protechted-route";
+import ProtectedLayout from "./layout/protechted-layout";
 import PublicRoute from "./utils/public-route/public-route";
 
 export default function App() {
@@ -27,15 +26,8 @@ export default function App() {
             <Route path="/project" element={<Project />} />
           </Route>
 
-          <Route element={<ProtechtedLayout />}>
-            <Route
-              path="/dashboard"
-              element={
-                <ProtechtedRoute>
-                  <Dashboard />
-                </ProtechtedRoute>
-              }
-            />
+          <Route element={<ProtectedLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
 
           <Route element={<AuthLayout />}>
