@@ -19,7 +19,6 @@ export function useAuthMiddleware() {
 
       if (loginData && userData) {
         const parseLoginData = JSON.parse(loginData);
-        console.log(parseLoginData);
 
         if (parseLoginData.isLoggedIn) {
           setIsAuthenticated(true);
@@ -46,7 +45,6 @@ export function useAuthMiddleware() {
     setIsAuthenticated(false);
     setUser(null);
     localStorage.removeItem("currentUser");
-    localStorage.removeItem("userData");
   };
 
   const logout = () => {

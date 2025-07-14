@@ -13,6 +13,7 @@ import AuthLayout from "./layout/auth-layout";
 import Dashboard from "./pages/dashboard/dashboard";
 import ProtectedLayout from "./layout/protechted-layout";
 import PublicRoute from "./utils/public-route/public-route";
+import UserDetails from "./pages/service/components/user-details/user-details";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/" element={<Main />} />
             <Route path="/about" element={<About />} />
             <Route path="/service" element={<Service />} />
+            <Route path="/service/users/:id" element={<UserDetails />} />
             <Route path="/project" element={<Project />} />
           </Route>
 
